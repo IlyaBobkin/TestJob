@@ -120,7 +120,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PapayaWhip;
+            BackColor = Color.Gainsboro;
             ClientSize = new Size(443, 339);
             Controls.Add(label1);
             Controls.Add(button4);
@@ -130,6 +130,7 @@
             Controls.Add(button5);
             Controls.Add(button1);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Мой склад";
             Load += MainForm_Load;
             ResumeLayout(false);
