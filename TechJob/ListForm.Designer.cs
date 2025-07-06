@@ -81,7 +81,8 @@
             dataGridViewPallets.Location = new Point(12, 109);
             dataGridViewPallets.Name = "dataGridViewPallets";
             dataGridViewPallets.ReadOnly = true;
-            dataGridViewPallets.Size = new Size(698, 403);
+            dataGridViewPallets.RowHeadersVisible = false;
+            dataGridViewPallets.Size = new Size(703, 392);
             dataGridViewPallets.TabIndex = 0;
             dataGridViewPallets.CellContentClick += dataGridViewPallets_CellContentClick_1;
             dataGridViewPallets.RowPrePaint += dataGridViewPallets_RowPrePaint;
@@ -89,10 +90,10 @@
             // groupHeaderDataGridViewTextBoxColumn
             // 
             groupHeaderDataGridViewTextBoxColumn.DataPropertyName = "GroupHeader";
-            groupHeaderDataGridViewTextBoxColumn.HeaderText = "Группа";
+            groupHeaderDataGridViewTextBoxColumn.HeaderText = "Объект";
             groupHeaderDataGridViewTextBoxColumn.Name = "groupHeaderDataGridViewTextBoxColumn";
             groupHeaderDataGridViewTextBoxColumn.ReadOnly = true;
-            groupHeaderDataGridViewTextBoxColumn.Width = 71;
+            groupHeaderDataGridViewTextBoxColumn.Width = 72;
             // 
             // palletIDDataGridViewTextBoxColumn
             // 
@@ -174,7 +175,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 22F);
-            label1.Location = new Point(292, 49);
+            label1.Location = new Point(298, 42);
             label1.Name = "label1";
             label1.Size = new Size(164, 41);
             label1.TabIndex = 2;
@@ -184,7 +185,7 @@
             // 
             button6.BackColor = Color.LightCoral;
             button6.Font = new Font("Segoe UI", 16F);
-            button6.Location = new Point(247, 547);
+            button6.Location = new Point(242, 551);
             button6.Name = "button6";
             button6.Size = new Size(260, 49);
             button6.TabIndex = 3;
@@ -201,7 +202,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
-            ClientSize = new Size(722, 639);
+            ClientSize = new Size(721, 639);
             Controls.Add(button6);
             Controls.Add(label1);
             Controls.Add(dataGridViewPallets);
@@ -230,6 +231,7 @@
         private Button button6;
         private BindingSource palletInfoBindingSource2;
         private BindingSource palletInfoBindingSource3;
+        private BindingSource palletInfoBindingSource4;
         private DataGridViewTextBoxColumn groupHeaderDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn palletIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn widthDataGridViewTextBoxColumn;
@@ -238,6 +240,5 @@
         private DataGridViewTextBoxColumn weightDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn volumeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn expirationDateDataGridViewTextBoxColumn;
-        private BindingSource palletInfoBindingSource4;
     }
 }

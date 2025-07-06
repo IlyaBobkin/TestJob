@@ -24,21 +24,19 @@ namespace TechJob
             var group_counter = 1;
             var pallet_counter = 1;
 
-            // 1. Группируем паллеты по их сроку годности
+            // Группировка паллет по сроку годности
             var groupedPallets = pallets
                 .GroupBy(p => p.ExpirationDate)
                 .OrderBy(g => g.Key);
 
             foreach (var group in groupedPallets)
             {
-                // Вставляем "заголовок группы"
                 palletData.Add(new PalletInfo
                 {
-                    PalletID = -1, // -1 чтобы распознать как заголовок
-                    GroupHeader = $"Группа {group_counter}",
+                    GroupHeader = $"Группа {group_counter} (вес ↓)",
                 });
 
-                // Сортируем внутри группы по весу
+                // Сортировка внутри группы по весу
                 var sorted = group.OrderBy(p => p.Weight);
 
                 foreach (var pallet in sorted)
@@ -53,7 +51,6 @@ namespace TechJob
                         Weight = pallet.Weight,
                         Volume = pallet.Volume,
                         ExpirationDate = pallet.ExpirationDate,
-                        BoxCount = pallet.Boxes.Count
                     });
                 }
 
@@ -61,7 +58,7 @@ namespace TechJob
                 group_counter++;
             }
 
-            // 2. Добавим блок: 3 паллеты с максимальным сроком годности
+            // 3 паллеты с максимальным сроком годности
             var top3 = pallets
                 .Where(p => p.Boxes.Any())
                 .Select(p => new
@@ -75,8 +72,7 @@ namespace TechJob
 
             palletData.Add(new PalletInfo
             {
-                PalletID = -1,
-                GroupHeader = "Топ 3 паллеты"
+                GroupHeader = "3 паллеты (объем ↓)"
             });
 
             foreach (var item in top3)
@@ -91,7 +87,6 @@ namespace TechJob
                     Weight = item.Pallet.Weight,
                     Volume = item.Pallet.Volume,
                     ExpirationDate = item.MaxExpiration,
-                    BoxCount = item.Pallet.Boxes.Count
                 });
             }
 
@@ -118,10 +113,10 @@ namespace TechJob
         {
             var row = dataGridViewPallets.Rows[e.RowIndex];
 
-            if (row.DataBoundItem is PalletInfo info && info.PalletID == -1)
+            if (row.DataBoundItem is PalletInfo info && info.PalletID == null)
             {
                 row.DefaultCellStyle.BackColor = Color.LightBlue; // выделение цветом
-                row.DefaultCellStyle.Font = new Font(dataGridViewPallets.Font, FontStyle.Bold); // можно ещё сделать жирным
+                row.DefaultCellStyle.Font = new Font(dataGridViewPallets.Font, FontStyle.Bold);
             }
         }
 
@@ -130,22 +125,19 @@ namespace TechJob
             this.Close();
         }
     }
-
-    // Класс для хранения информации о паллете для отображения в DataGridView
     public class PalletInfo
     {
         public string GroupHeader { get; set; }
-        public int PalletID { get; set; }
+        public int? PalletID { get; set; }
 
-        public double Width { get; set; }
-        public double Height { get; set; }
-        public double Depth { get; set; }
+        public double? Width { get; set; }
+        public double? Height { get; set; }
+        public double? Depth { get; set; }
 
-        public double Weight { get; set; }
-        public double Volume { get; set; }
+        public double? Weight { get; set; }
+        public double? Volume { get; set; }
         public DateTime? ExpirationDate { get; set; }
 
-        public int BoxCount { get; set; }
     }
 
 
